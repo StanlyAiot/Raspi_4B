@@ -12,8 +12,6 @@ p = GPIO.PWM(pinLED, freq)
 p.start(dc)
 input(" press Enter to stop")
 p.stop()
-GPIO.cleaup()
 
-
-# test agin..........
+GPIO.cleanup()
 
