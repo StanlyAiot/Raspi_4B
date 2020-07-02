@@ -24,6 +24,7 @@ import requests
 # import SQL packages
 import mysql.connector as mariadb
 from mysql.connector import Error
+import random   #fake SBP,DBP,GLU
 
 pinECHO = 23
 pinTRIG = 24
@@ -215,8 +216,14 @@ try:
                                 print("連線成功")
                                 value1 = id
                                 value2 = name
-                                query = "INSERT INTO dailymeasure VALUES (%s,%s,0,now(),0,0,0,0,0);"
-                                cursor.execute(query,(value1,value2))
+                                #Stan_ create three randon arguments
+                                sbp = str(random.randint(110,170))  
+                                dbp = str(random.randint(60,120))
+                                glu = str(random.randint(80,130))
+                                print(sbp+"\n"+dbp+"\n"+glu)
+                                
+                                query = "INSERT INTO dailymeasure VALUES (%s,%s,0,now(),%s,%s,%s,0,0);"
+                                cursor.execute(query,(value1,value2,sbp,dbp,glu))
                                 connection.commit()
                                 print("Insert成功")
                                 print('detect start')
