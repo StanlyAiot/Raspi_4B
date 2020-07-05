@@ -34,8 +34,8 @@ GPIO.setup(pinTRIG, GPIO.OUT)
     
 #ESP01S
 def DetectorON():
-    #url = 'http://192.168.0.16/on'
-    url = 'http://192.168.10.196/on'
+    url = 'http://192.168.0.16/on'
+    #url = 'http://192.168.10.196/on'
     print(url)
     headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0'}
     response = requests.get(url,headers=headers)
@@ -43,8 +43,8 @@ def DetectorON():
     print('{}'.format(response.text))
     
 def DetectorOFF():
-    #url = 'http://192.168.0.16/off'
-    url = 'http://192.168.10.196/off'
+    url = 'http://192.168.0.16/off'
+    #url = 'http://192.168.10.196/off'
     print(url)
     headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0'}
     response = requests.get(url,headers=headers)
@@ -109,7 +109,7 @@ try:
 
             # initialize the video stream, then allow the camera sensor to warm up
             print("[INFO] starting video stream...")
-            vs = VideoStream(src=1).start()
+            vs = VideoStream(src=0).start()
             #vs = VideoStream(usePiCamera=True).start()
             time.sleep(2.0)
 
@@ -218,7 +218,8 @@ try:
                             print("Insert成功")
                             print('detect start')
                             # print(id)
-                            url = 'http://192.168.10.125/sw?patno={}'.format(id)
+                            #url = 'http://192.168.10.125/sw?patno={}'.format(id)
+                            url = 'http://192.168.0.06/sw?patno={}'.format(id)
                             print(url)
                             headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0'}
                             response = requests.get(url,headers=headers)
